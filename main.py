@@ -8,7 +8,12 @@ def translate (word):
         return data[word]
     elif len(get_close_matches(word,data.keys())):
         # cutoff=0.9 (nissbat taxaaboh)
-        return "do you mean %s ,writing it" % get_close_matches(word,data.keys(),)[0]
+        yn = input("do you mean %s  ,(y/n) : " % get_close_matches(word,data.keys(),)[0])
+        if yn.lower() =="y" or yn.lower() =="yes" :
+            return data[get_close_matches(word,data.keys(),)[0]]
+        else:
+            return "we dont know what you mean please check again"
+
     else:
         return "the word does not exist. Please check it."
 
